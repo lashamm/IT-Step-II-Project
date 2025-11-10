@@ -45,5 +45,16 @@ namespace IT_Step_II_Project.Models
                 _grade = value;
             }
         }
+
+        public Student() { }
+        public Student(
+            string name, 
+            int rollNumber, 
+            char grade)
+        {
+            Name = name;
+            RollNumber = rollNumber;
+            Grade = grade;
+        }
     }
 }
