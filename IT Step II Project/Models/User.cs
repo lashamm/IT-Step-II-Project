@@ -57,12 +57,12 @@ namespace IT_Step_II_Project.Models
             username = Console.ReadLine();
 
             Console.WriteLine("Please enter your password");
-            passwordValidation(password);
             password = Console.ReadLine();
+            passwordValidation(password);
 
             Console.WriteLine("Please confirm your password");
-            confirmPassword(password, passwordConfirm);
             passwordConfirm = Console.ReadLine();
+            confirmPassword(password, passwordConfirm);
         }
 
         public override string ToString()

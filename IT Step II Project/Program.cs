@@ -3,3 +3,4 @@
 User user = new User("", "", "");
 
 user.UserCreate();
+Console.WriteLine(user);
