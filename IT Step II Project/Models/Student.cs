@@ -31,6 +31,7 @@ namespace IT_Step_II_Project.Models
                 {
                     throw new ArgumentOutOfRangeException("RollNumber must be a positive integer.");
                 }
+                _rollNumber = value;
             } 
         }
         public char Grade {
@@ -41,6 +42,7 @@ namespace IT_Step_II_Project.Models
                 {
                     throw new ArgumentException("Wrong grade");
                 }
+                _grade = value;
             }
         }
     }
