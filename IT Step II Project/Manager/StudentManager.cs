@@ -12,19 +12,27 @@ namespace IT_Step_II_Project.Manager
 
         public void addStudent(Models.Student student)
         {
+            Console.WriteLine("Enter Student Name:");
+            student.Name = Console.ReadLine();
+            Console.WriteLine("Enter Roll Number:");
+            student.RollNumber = int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Grade (A, B, C, F):");
+            student.Grade = char.Parse(Console.ReadLine());
+
+
             _students.Add(student);
         }
         
-        public void showAll()
+        public void showAll(Models.Student student)
         {
-            _students.ForEach(s => Console.WriteLine($"Name: {s.Name}, Roll Number: {s.RollNumber}, Grade: {s.Grade}"));
+            _students.ForEach(student => Console.WriteLine($"Name: {student.Name}, Roll Number: {student.RollNumber}, Grade: {student.Grade}"));
         }
 
-        public void findStudent()
+        public void findStudent(Models.Student student)
         {
             Console.WriteLine("Enter Roll Number to find student:");
             int rollNumber = int.Parse(Console.ReadLine());
-            var student = _students.FirstOrDefault(s => s.RollNumber == rollNumber);
+            student = _students.FirstOrDefault(s => s.RollNumber == rollNumber);
             if (student != null)
             {
                 Console.WriteLine($"Name: {student.Name}, Roll Number: {student.RollNumber}, Grade: {student.Grade}");

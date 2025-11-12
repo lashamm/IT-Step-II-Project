@@ -38,7 +38,7 @@ namespace IT_Step_II_Project.Models
             get => _grade;
             set
             {
-                if(value != 'A' || value != 'F' || value != 'C' || value != 'B')
+                if (!"AFCBafcb".Contains(value))
                 {
                     throw new ArgumentException("Wrong grade");
                 }
