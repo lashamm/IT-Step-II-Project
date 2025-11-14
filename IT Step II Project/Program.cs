@@ -16,7 +16,7 @@ while (true)
     "\nPress S to show all students" +
     "\nPress F to find any student using a roll number" +
     "\nPress Q to quit the program");
-char option = Console.ReadKey().KeyChar;
+    char option = Console.ReadKey().KeyChar;
 Console.Clear();
 
     if (option == 'A' || option == 'a')
