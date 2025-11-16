@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IT_Step_II_Project.Models
 {
@@ -12,7 +8,8 @@ namespace IT_Step_II_Project.Models
         private int _rollNumber;
         private char _grade;
 
-        public string Name { 
+        public string Name
+        {
             get => _name;
             set
             {
@@ -20,41 +17,50 @@ namespace IT_Step_II_Project.Models
                 {
                     throw new ArgumentException("Name cannot be null or empty.");
                 }
-                _name = value;
+                _name = value.Trim();
             }
         }
-        public int RollNumber {
+
+        public int RollNumber
+        {
             get => _rollNumber;
             set
             {
-                if(value <= 0)
+                if (value <= 0)
                 {
-                    throw new ArgumentOutOfRangeException("RollNumber must be a positive integer.");
+                    throw new ArgumentOutOfRangeException(nameof(RollNumber),
+                        "Roll number must be a positive integer.");
                 }
                 _rollNumber = value;
-            } 
+            }
         }
-        public char Grade {
+
+        public char Grade
+        {
             get => _grade;
             set
             {
-                if (!"AFCBafcb".Contains(value))
+                char upperValue = char.ToUpper(value);
+                if (!"AFCB".Contains(upperValue))
                 {
-                    throw new ArgumentException("Wrong grade");
+                    throw new ArgumentException("Grade must be A, B, C, or F.");
                 }
-                _grade = value;
+                _grade = upperValue;
             }
         }
 
         public Student() { }
-        public Student(
-            string name, 
-            int rollNumber, 
-            char grade)
+
+        public Student(string name, int rollNumber, char grade)
         {
             Name = name;
             RollNumber = rollNumber;
             Grade = grade;
+        }
+
+        public override string ToString()
+        {
+            return $"Name: {Name}, Roll Number: {RollNumber}, Grade: {Grade}";
         }
     }
 }

@@ -2,46 +2,51 @@
 using IT_Step_II_Project.Manager;
 
 User user = new User("", "", "");
-
 user.UserCreate();
 Console.WriteLine(user);
 Console.Clear();
 
 StudentManager studentManager = new StudentManager();
-Student student = new Student();
+
 while (true)
 {
     Console.WriteLine(
-      "Press A to add student. " +
-    "\nPress S to show all students" +
-    "\nPress F to find any student using a roll number" +
-    "\nPress Q to quit the program");
-    char option = Console.ReadKey().KeyChar;
-Console.Clear();
+        "Press A to add student" +
+        "\nPress S to show all students" +
+        "\nPress F to find any student using a roll number" +
+        "\nPress C to change a student's grade" +
+        "\nPress D to delete a student" +
+        "\nPress Q to quit the program");
 
-    if (option == 'A' || option == 'a')
+    char option = char.ToUpper(Console.ReadKey().KeyChar);
+    Console.Clear();
+
+    switch (option)
     {
-        studentManager.addStudent(student);
-        Console.Clear();
-        continue;
+        case 'A':
+            studentManager.AddStudent();
+            break;
+        case 'S':
+            studentManager.ShowAll();
+            break;
+        case 'F':
+            studentManager.FindStudent();
+            break;
+        case 'C':
+            studentManager.ChangeGrade();
+            break;
+        case 'D':
+            studentManager.DeleteStudent();
+            break;
+        case 'Q':
+            Console.WriteLine("Goodbye!");
+            return;
+        default:
+            Console.WriteLine("Invalid option. Please try again.");
+            break;
     }
-    else if (option == 'S' || option == 's')
-    {
-        studentManager.showAll(student);
-        Console.Clear();
-        continue;
-    }
-    else if (option == 'F' || option == 'f')
-    {
-        studentManager.findStudent(student);
-        Console.Clear();
-        continue;
-    }
-    else if (option == 'Q' || option == 'q')
-    {
-        Environment.Exit(0);
-        Console.Clear();
-        continue;
-    }
+
+    Console.WriteLine("\nPress any key to continue...");
+    Console.ReadKey();
+    Console.Clear();
 }
-
