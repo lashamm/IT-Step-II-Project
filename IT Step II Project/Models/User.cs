@@ -63,6 +63,11 @@ namespace IT_Step_II_Project.Models
             Console.WriteLine("Please confirm your password");
             passwordConfirm = Console.ReadLine();
             confirmPassword(password, passwordConfirm);
+
+            using (var sw = new StreamWriter("users.txt", true))
+            {
+                sw.WriteLine($"{username},{password}");
+            }
         }
 
         public override string ToString()
