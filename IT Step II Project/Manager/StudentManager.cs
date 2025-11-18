@@ -42,6 +42,10 @@ namespace IT_Step_II_Project.Manager
                 _students.Add(student);
 
                 Console.WriteLine("Student added successfully!");
+                using (var writer = new StreamWriter("students.txt", true))
+                {
+                    writer.WriteLine($"{student.Name},{student.RollNumber},{student.Grade}");
+                }
             }
             catch (ArgumentException ex)
             {
