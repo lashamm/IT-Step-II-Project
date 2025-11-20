@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace IT_Step_II_Project.Models
 {
-    internal class User
+    public class User
     {
+        private List<User> _users;
+
         public string username { get; set; }
         public string password { get; set; }
         public string passwordConfirm { get; set; }
 
+        public User() { }
         public User(
             string username,
             string password,
@@ -64,10 +68,23 @@ namespace IT_Step_II_Project.Models
             passwordConfirm = Console.ReadLine();
             confirmPassword(password, passwordConfirm);
 
-            using (var sw = new StreamWriter("users.txt", true))
-            {
-                sw.WriteLine($"{username},{password}");
-            }
+            SaveUserData();
+        }
+
+        private void SaveUserData()
+        {
+            string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? "";
+            string folderDir = Path.Combine(projectDir, "Data");
+
+            if (!Directory.Exists(folderDir))
+                Directory.CreateDirectory(folderDir);
+
+            string filePath = Path.Combine(folderDir, "User.xml");
+
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<User>));
+
+            using StreamWriter sw = new StreamWriter(filePath);
+            xmlSerializer.Serialize(sw, _users);
         }
 
         public override string ToString()
