@@ -10,7 +10,7 @@ namespace IT_Step_II_Project.Models
 {
     public class User
     {
-        private List<User> _users;
+        private List<User> _users = new List<User>();
 
         public string username { get; set; }
         public string password { get; set; }
@@ -69,44 +69,26 @@ namespace IT_Step_II_Project.Models
             passwordConfirm = Console.ReadLine();
             confirmPassword(password, passwordConfirm);
 
+            User newUser = new User(username, password, passwordConfirm);
+            _users.Add(newUser);
+
             SaveUserData();
         }
 
-        //private void SaveUserData()
-        //{
-        //    string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? "";
-        //    string folderDir = Path.Combine(projectDir, "Data");
+        string filePath = "users.json";
 
-        //    if (!Directory.Exists(folderDir))
-        //        Directory.CreateDirectory(folderDir);
-
-        //    string filePath = Path.Combine(folderDir, "User.xml");
-
-        //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<User>));
-
-        //    using StreamWriter sw = new StreamWriter(filePath);
-        //    xmlSerializer.Serialize(sw, _users);
-        //}
         private void SaveUserData()
         {
-            string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? "";
-            string folderDir = Path.Combine(projectDir, "Data");
-
-            if (!Directory.Exists(folderDir))
-                Directory.CreateDirectory(folderDir);
-
-            string filePath = Path.Combine(folderDir, "User.json");
-
-            // Serialize to JSON (with pretty formatting)
-            var options = new JsonSerializerOptions
+            var JsonOptions = new JsonSerializerOptions
             {
                 WriteIndented = true
             };
 
-            string json = JsonSerializer.Serialize(_users, options);
+            var jsonString = JsonSerializer.Serialize(_users, JsonOptions);
 
-            File.WriteAllText(filePath, json);
+            File.WriteAllText("users.json", jsonString);
         }
+
 
 
         public override string ToString()
