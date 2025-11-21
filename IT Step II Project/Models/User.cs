@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
@@ -71,6 +72,21 @@ namespace IT_Step_II_Project.Models
             SaveUserData();
         }
 
+        //private void SaveUserData()
+        //{
+        //    string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? "";
+        //    string folderDir = Path.Combine(projectDir, "Data");
+
+        //    if (!Directory.Exists(folderDir))
+        //        Directory.CreateDirectory(folderDir);
+
+        //    string filePath = Path.Combine(folderDir, "User.xml");
+
+        //    XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<User>));
+
+        //    using StreamWriter sw = new StreamWriter(filePath);
+        //    xmlSerializer.Serialize(sw, _users);
+        //}
         private void SaveUserData()
         {
             string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? "";
@@ -79,13 +95,19 @@ namespace IT_Step_II_Project.Models
             if (!Directory.Exists(folderDir))
                 Directory.CreateDirectory(folderDir);
 
-            string filePath = Path.Combine(folderDir, "User.xml");
+            string filePath = Path.Combine(folderDir, "User.json");
 
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<User>));
+            // Serialize to JSON (with pretty formatting)
+            var options = new JsonSerializerOptions
+            {
+                WriteIndented = true
+            };
 
-            using StreamWriter sw = new StreamWriter(filePath);
-            xmlSerializer.Serialize(sw, _users);
+            string json = JsonSerializer.Serialize(_users, options);
+
+            File.WriteAllText(filePath, json);
         }
+
 
         public override string ToString()
         {
