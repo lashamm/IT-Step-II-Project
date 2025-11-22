@@ -1,13 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 using IT_Step_II_Project.Models;
 
 namespace IT_Step_II_Project.Manager
 {
     internal class StudentManager : Icrud
     {
-        private List<Student> _students = new List<Student>();
+        private List<Student> _students = [];
+        private readonly string _filePath;
+
+        public StudentManager()
+        {
+            string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? string.Empty;
+            _filePath = Path.Combine(projectDir,"Data", "Users.json");
+
+            string text = File.ReadAllText(_filePath); // file exists check missing
+
+            _students = JsonSerializer.Deserialize<List<Student>>(text) ?? new List<Student>();
+        }
 
         public void AddStudent()
         {
@@ -16,7 +29,7 @@ namespace IT_Step_II_Project.Manager
                 Console.WriteLine("=== Add New Student ===");
 
                 Console.Write("Enter Student Name: ");
-                string name = Console.ReadLine();
+                string name = Console.ReadLine()??string.Empty;
 
                 Console.Write("Enter Roll Number: ");
                 if (!int.TryParse(Console.ReadLine(), out int rollNumber))

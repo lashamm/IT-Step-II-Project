@@ -75,8 +75,7 @@ namespace IT_Step_II_Project.Models
             SaveUserData();
         }
 
-        string filePath = "users.json";
-
+        
         private void SaveUserData()
         {
             var JsonOptions = new JsonSerializerOptions
@@ -88,8 +87,6 @@ namespace IT_Step_II_Project.Models
 
             File.WriteAllText("users.json", jsonString);
         }
-
-
 
         public override string ToString()
         {

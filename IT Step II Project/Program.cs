@@ -1,10 +1,10 @@
 ﻿using IT_Step_II_Project.Models;
 using IT_Step_II_Project.Manager;
 
-User user = new User("", "", "");
-user.UserCreate();
-Console.WriteLine(user);
-Console.Clear();
+//User user = new User("", "", "");
+//user.UserCreate();
+//Console.WriteLine(user);
+//Console.Clear();
 
 StudentManager studentManager = new StudentManager();
 
