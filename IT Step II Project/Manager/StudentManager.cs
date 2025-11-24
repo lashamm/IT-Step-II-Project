@@ -12,15 +12,15 @@ namespace IT_Step_II_Project.Manager
         private List<Student> _students = [];
         private readonly string _filePath;
 
-        public StudentManager()
-        {
-            string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? string.Empty;
-            _filePath = Path.Combine(projectDir,"Data", "Users.json");
+        //public StudentManager()
+        //{
+        //    string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? string.Empty;
+        //    _filePath = Path.Combine(projectDir,"Data", "Users.json");
 
-            string text = File.ReadAllText(_filePath); // file exists check missing
+        //    string text = File.ReadAllText(_filePath); // file exists check missing
 
-            _students = JsonSerializer.Deserialize<List<Student>>(text) ?? new List<Student>();
-        }
+        //    _students = JsonSerializer.Deserialize<List<Student>>(text) ?? new List<Student>();
+        //}
 
         public void AddStudent()
         {
