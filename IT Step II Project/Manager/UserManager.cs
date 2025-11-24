@@ -15,26 +15,42 @@ namespace IT_Step_II_Project.Manager
 
         public UserManager()
         {
-            // Get the project root directory (goes up from bin/Debug/net.../
             string projectRoot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
 
-            // Create path to Data folder in project root
             string dataFolder = Path.Combine(projectRoot, "Data");
 
-            // Create the Data folder if it doesn't exist
             if (!Directory.Exists(dataFolder))
             {
                 Directory.CreateDirectory(dataFolder);
             }
 
             _filePath = Path.Combine(dataFolder, "User.json");
+
             LoadUserData();
         }
 
+        private bool UsernameExists(string username)
+        {
+            return _users.Any(u => u.username.Equals(username, StringComparison.OrdinalIgnoreCase));
+        }
         public void UserCreate()
         {
-            Console.WriteLine("Please enter your username");
-            string username = Console.ReadLine();
+            string username;
+
+            while (true)
+            {
+                Console.WriteLine("Please enter your username");
+                username = Console.ReadLine();
+
+                if (UsernameExists(username))
+                {
+                    Console.WriteLine($"Username '{username}' is already taken. Please try a different username.");
+                }
+                else
+                {
+                    break;
+                }
+            }
 
             Console.WriteLine("Please enter your password");
             string password = Console.ReadLine();
@@ -81,7 +97,7 @@ namespace IT_Step_II_Project.Manager
 
         private void SaveUserData()
         {
-            Console.WriteLine($"Saving to: {_filePath}"); // Add this line to see the path
+            Console.WriteLine($"Saving to: {_filePath}");
             var jsonOptions = new JsonSerializerOptions
             {
                 WriteIndented = true
@@ -92,9 +108,9 @@ namespace IT_Step_II_Project.Manager
 
         private void LoadUserData()
         {
-            if (File.Exists(_filePath))  // Use _filePath here
+            if (File.Exists(_filePath)) 
             {
-                var jsonString = File.ReadAllText(_filePath);  // And here
+                var jsonString = File.ReadAllText(_filePath); 
                 if (!string.IsNullOrWhiteSpace(jsonString))
                 {
                     _users = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>();

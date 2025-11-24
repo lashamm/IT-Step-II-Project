@@ -2,15 +2,6 @@
 using IT_Step_II_Project.Manager;
 using System.Text.Json;
 
-//using (var reader = new StreamReader("users.json"))
-//{
-//    string json = reader.ReadToEnd(); 
-//    var users = JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
-//    for(int i =0; i<users.Count; i++)
-//    {
-//        Console.WriteLine(users[i]);
-//    } 
-//}
 
 UserManager userManager = new UserManager();
 userManager.UserCreate();

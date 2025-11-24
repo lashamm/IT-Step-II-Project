@@ -9,18 +9,35 @@ namespace IT_Step_II_Project.Manager
 {
     internal class StudentManager : Icrud
     {
-        private List<Student> _students = [];
+        private List<Student> _students = new List<Student>();
         private readonly string _filePath;
 
-        //public StudentManager()
-        //{
-        //    string projectDir = Directory.GetParent(Environment.CurrentDirectory)?.Parent?.Parent?.FullName ?? string.Empty;
-        //    _filePath = Path.Combine(projectDir,"Data", "Users.json");
+        public StudentManager()
+        {
+            string projectRoot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
 
-        //    string text = File.ReadAllText(_filePath); // file exists check missing
+            string dataFolder = Path.Combine(projectRoot, "Data");
 
-        //    _students = JsonSerializer.Deserialize<List<Student>>(text) ?? new List<Student>();
-        //}
+            if (!Directory.Exists(dataFolder))
+            {
+                Directory.CreateDirectory(dataFolder);
+            }
+
+            _filePath = Path.Combine(dataFolder, "Students.json");
+            LoadStudentData();
+        }
+
+        private void LoadStudentData()
+        {
+            if (File.Exists(_filePath))
+            {
+                var jsonString = File.ReadAllText(_filePath);
+                //if (!string.IsNullOrWhiteSpace(jsonString))
+                //{
+                //    _students = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>();
+                //}
+            }
+        }
 
         public void AddStudent()
         {

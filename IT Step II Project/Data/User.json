@@ -18,5 +18,20 @@
     "username": "Gela",
     "password": "Gela1234",
     "passwordConfirm": "Gela1234"
+  },
+  {
+    "username": "Lasha",
+    "password": "Lasha1234",
+    "passwordConfirm": "Lasha1234"
+  },
+  {
+    "username": "mdas",
+    "password": "Lasha1234",
+    "passwordConfirm": "Lasha1234"
+  },
+  {
+    "username": "b",
+    "password": "Lasha1234",
+    "passwordConfirm": "Lasha1234"
   }
 ]
