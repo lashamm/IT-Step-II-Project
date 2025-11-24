@@ -1,17 +1,12 @@
 [
   {
     "Name": "lasha",
-    "RollNumber": 1,
+    "RollNumber": 14,
     "Grade": "A"
   },
   {
     "Name": "gio",
-    "RollNumber": 2,
+    "RollNumber": 13,
     "Grade": "B"
-  },
-  {
-    "Name": "teko",
-    "RollNumber": 3,
-    "Grade": "C"
   }
 ]

@@ -10,7 +10,7 @@ namespace IT_Step_II_Project.Manager
 {
     public class UserManager
     {
-        private List<User> _users = new List<User>();
+        private List<User> _users;
         private readonly string _filePath;
 
         public UserManager()
