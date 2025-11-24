@@ -3,9 +3,42 @@ using IT_Step_II_Project.Manager;
 using System.Text.Json;
 
 
-UserManager userManager = new UserManager();
-userManager.UserCreate();
+Console.WriteLine("Welocome, press 'L' to log-in or press 'R' to Register");
+var optionLogOrReg = char.ToUpper(Console.ReadKey().KeyChar);
 Console.Clear();
+
+while (true)
+{
+    if (optionLogOrReg == 'L')
+    {
+        Console.WriteLine("Please enter your username");
+        string username = Console.ReadLine() ?? string.Empty;
+        Console.WriteLine("Please enter your password");
+        string password = Console.ReadLine() ?? string.Empty;
+        UserManager userManager = new UserManager();
+        bool loginSuccess = userManager.UserLogin(username, password);
+        Console.Clear();
+        break;
+        if (!loginSuccess)
+        {
+            Console.WriteLine("Login failed. Exiting the program.");
+            return;
+        }
+        Console.Clear();
+    }
+    else if (optionLogOrReg == 'R')
+    {
+        UserManager userManager = new UserManager();
+        userManager.UserCreate();
+        Console.Clear();
+        break;
+    }
+    else
+    {
+        Console.WriteLine("Invalid option. Exiting the program.");
+        return;
+    } 
+}
 
 StudentManager studentManager = new StudentManager();
 

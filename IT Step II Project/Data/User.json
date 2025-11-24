@@ -33,5 +33,20 @@
     "username": "b",
     "password": "Lasha1234",
     "passwordConfirm": "Lasha1234"
+  },
+  {
+    "username": "l",
+    "password": "Lasha1234",
+    "passwordConfirm": "Lasha1234"
+  },
+  {
+    "username": "Papa",
+    "password": "Lasha1234",
+    "passwordConfirm": "Lasha1234"
+  },
+  {
+    "username": "mogoo",
+    "password": "Mogoo1234",
+    "passwordConfirm": "Mogoo1234"
   }
 ]

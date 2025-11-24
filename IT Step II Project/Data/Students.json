@@ -1,1 +1,17 @@
-﻿[]
+[
+  {
+    "Name": "lasha",
+    "RollNumber": 1,
+    "Grade": "A"
+  },
+  {
+    "Name": "gio",
+    "RollNumber": 2,
+    "Grade": "B"
+  },
+  {
+    "Name": "teko",
+    "RollNumber": 3,
+    "Grade": "C"
+  }
+]

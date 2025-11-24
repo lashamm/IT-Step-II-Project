@@ -121,5 +121,21 @@ namespace IT_Step_II_Project.Manager
         {
             return _users;
         }
+
+        public bool UserLogin(string username, string password)
+        {
+            var user = _users.FirstOrDefault(u => u.username.Equals(username, StringComparison.OrdinalIgnoreCase)
+                                               && u.password == password);
+            if (user != null)
+            {
+                Console.WriteLine("Login successful!");
+                return true;
+            }
+            else
+            {
+                Console.WriteLine("Invalid username or password.");
+                return false;
+            }
+        }
     }
 }

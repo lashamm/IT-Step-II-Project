@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
-using System.Text.Json.Nodes;
+using System.Text.Json.Nodes;  
 using IT_Step_II_Project.Models;
 
 namespace IT_Step_II_Project.Manager
@@ -32,10 +32,6 @@ namespace IT_Step_II_Project.Manager
             if (File.Exists(_filePath))
             {
                 var jsonString = File.ReadAllText(_filePath);
-                //if (!string.IsNullOrWhiteSpace(jsonString))
-                //{
-                //    _students = JsonSerializer.Deserialize<List<User>>(jsonString) ?? new List<User>();
-                //}
             }
         }
 
@@ -72,10 +68,14 @@ namespace IT_Step_II_Project.Manager
                 _students.Add(student);
 
                 Console.WriteLine("Student added successfully!");
-                using (var writer = new StreamWriter("students.txt", true))
+
+                Console.WriteLine($"Saving to: {_filePath}");
+                var jsonOptions = new JsonSerializerOptions
                 {
-                    writer.WriteLine($"{student.Name},{student.RollNumber},{student.Grade}");
-                }
+                    WriteIndented = true
+                };
+                var jsonString = JsonSerializer.Serialize(_students, jsonOptions);
+                File.WriteAllText(_filePath, jsonString);
             }
             catch (ArgumentException ex)
             {
