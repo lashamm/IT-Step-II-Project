@@ -9,7 +9,7 @@ namespace IT_Step_II_Project.Manager
 {
     internal class StudentManager : Icrud
     {
-        private List<Student> _students = new List<Student>();
+        private List<Student> _students;
         private readonly string _filePath;
 
         public StudentManager()
@@ -50,7 +50,7 @@ namespace IT_Step_II_Project.Manager
                     Console.WriteLine("Invalid roll number. Please enter a number.");
                     return;
                 }
-
+                
                 if (_students.Any(s => s.RollNumber == rollNumber))
                 {
                     Console.WriteLine("A student with this roll number already exists.");

@@ -18,13 +18,13 @@ while (true)
         UserManager userManager = new UserManager();
         bool loginSuccess = userManager.UserLogin(username, password);
         Console.Clear();
-        break;
         if (!loginSuccess)
         {
             Console.WriteLine("Login failed. Exiting the program.");
             return;
         }
         Console.Clear();
+        break;
     }
     else if (optionLogOrReg == 'R')
     {
