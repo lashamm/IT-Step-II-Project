@@ -32,14 +32,26 @@ namespace IT_Step_II_Project.Manager
             if (File.Exists(_filePath))
             {
                 var jsonString = File.ReadAllText(_filePath);
+                _students = JsonSerializer.Deserialize<List<Student>>(jsonString) ?? new List<Student>();
             }
+            else
+            {
+                _students = new List<Student>();
+            }
+        }
+
+        private void SaveStudentData()
+        {
+            var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+            var jsonString = JsonSerializer.Serialize(_students, jsonOptions);
+            File.WriteAllText(_filePath, jsonString);
         }
 
         public void AddStudent()
         {
             try
             {
-                Console.WriteLine("=== Add New Student ===");
+                Console.WriteLine("=== Add New Student ===");   
 
                 Console.Write("Enter Student Name: ");
                 string name = Console.ReadLine()??string.Empty;
@@ -164,6 +176,11 @@ namespace IT_Step_II_Project.Manager
 
                     student.Grade = newGrade;
                     Console.WriteLine("Grade updated successfully!");
+
+                    // Save to JSON file
+                    var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+                    var jsonString = JsonSerializer.Serialize(_students, jsonOptions);
+                    File.WriteAllText(_filePath, jsonString);
                 }
                 else
                 {
@@ -203,6 +220,11 @@ namespace IT_Step_II_Project.Manager
                     {
                         _students.Remove(student);
                         Console.WriteLine("Student deleted successfully!");
+
+                        // Save to JSON file
+                        var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
+                        var jsonString = JsonSerializer.Serialize(_students, jsonOptions);
+                        File.WriteAllText(_filePath, jsonString);
                     }
                     else
                     {
