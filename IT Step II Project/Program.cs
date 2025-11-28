@@ -5,10 +5,12 @@ using System.Text.Json;
 
 Console.WriteLine("Welocome, press 'L' to log-in or press 'R' to Register");
 var optionLogOrReg = char.ToUpper(Console.ReadKey().KeyChar);
-Console.Clear();
 
 while (true)
 {
+    optionLogOrReg = char.ToUpper(Console.ReadKey().KeyChar);
+    Console.Clear();
+
     if (optionLogOrReg == 'L')
     {
         Console.WriteLine("Please enter your username");
@@ -17,11 +19,10 @@ while (true)
         string password = Console.ReadLine() ?? string.Empty;
         UserManager userManager = new UserManager();
         bool loginSuccess = userManager.UserLogin(username, password);
-        Console.Clear();
+        while (loginSuccess)
         if (!loginSuccess)
         {
-            Console.WriteLine("Login failed. Exiting the program.");
-            return;
+            Console.WriteLine("Login failed.");
         }
         Console.Clear();
         break;
@@ -35,9 +36,9 @@ while (true)
     }
     else
     {
-        Console.WriteLine("Invalid option. Exiting the program.");
-        return;
-    } 
+        Console.WriteLine("Invalid option. Please press 'L' to log-in or 'R' to Register");
+        // Loop continues, prompting again
+    }
 }
 
 StudentManager studentManager = new StudentManager();
