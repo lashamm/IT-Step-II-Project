@@ -2,12 +2,18 @@
 
 namespace IT_Step_II_Project.Models
 {
+    /// <summary>
+    /// Student class 
+    /// </summary>
     internal class Student
     {
         private string _name;
         private int _rollNumber;
         private char _grade;
 
+        /// <summary>
+        /// Student's name
+        /// </summary>
         public string Name
         {
             get => _name;
@@ -21,6 +27,9 @@ namespace IT_Step_II_Project.Models
             }
         }
 
+        /// <summary>
+        /// Student's rollnumber
+        /// </summary>
         public int RollNumber
         {
             get => _rollNumber;
@@ -35,6 +44,9 @@ namespace IT_Step_II_Project.Models
             }
         }
 
+        /// <summary>
+        /// Student's grader
+        /// </summary>
         public char Grade
         {
             get => _grade;
@@ -49,6 +61,10 @@ namespace IT_Step_II_Project.Models
             }
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Student"/> class.
+        /// </summary>
+        /// კონსტრუქტორი რომელიც ქმნის ობიექტს
         public Student() { }
 
         public Student(string name, int rollNumber, char grade)

@@ -8,11 +8,17 @@ using System.Threading.Tasks;
 
 namespace IT_Step_II_Project.Manager
 {
+    /// <summary>
+    /// UserManager class
+    /// </summary>
     public class UserManager
     {
         private List<User> _users;
         private readonly string _filePath;
 
+        /// <summary>
+        /// loads student data
+        /// </summary>
         public UserManager()
         {
             string projectRoot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
@@ -28,11 +34,19 @@ namespace IT_Step_II_Project.Manager
 
             LoadUserData();
         }
-
+        /// <summary>
+        /// Username validation
+        /// </summary>
+        /// <param name="username"></param>
+        /// <returns></returns>
         private bool UsernameExists(string username)
         {
             return _users.Any(u => u.username.Equals(username, StringComparison.OrdinalIgnoreCase));
         }
+
+        /// <summary>
+        /// User create
+        /// </summary>
         public void UserCreate()
         {
             string username;
@@ -67,6 +81,10 @@ namespace IT_Step_II_Project.Manager
             Console.WriteLine("User created successfully!");
         }
 
+        /// <summary>
+        /// Password validation
+        /// </summary>
+        /// <param name="password"></param>
         private void PasswordValidation(string password)
         {
             while (true)
@@ -107,6 +125,11 @@ namespace IT_Step_II_Project.Manager
             }
         }
 
+        /// <summary>
+        /// Confirming password
+        /// </summary>
+        /// <param name="password"></param>
+        /// <param name="passwordConfirm"></param>
         private void ConfirmPassword(string password, string passwordConfirm)
         {
             if (password != passwordConfirm)
@@ -115,6 +138,9 @@ namespace IT_Step_II_Project.Manager
             }
         }
 
+        /// <summary>
+        /// Saving User's data
+        /// </summary>
         private void SaveUserData()
         {
             Console.WriteLine($"Saving to: {_filePath}");
@@ -126,6 +152,9 @@ namespace IT_Step_II_Project.Manager
             File.WriteAllText(_filePath, jsonString);
         }
 
+        /// <summary>
+        /// loading User's data
+        /// </summary>
         private void LoadUserData()
         {
             if (File.Exists(_filePath)) 
@@ -137,11 +166,21 @@ namespace IT_Step_II_Project.Manager
                 }
             }
         }
+        /// <summary>
+        /// Get's all users
+        /// </summary>
+        /// <returns></returns>
         public List<User> GetAllUsers()
         {
             return _users;
         }
 
+        /// <summary>
+        /// User login validation
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public bool UserLogin(string username, string password)
         {
             var user = _users.FirstOrDefault(u => u.username.Equals(username, StringComparison.OrdinalIgnoreCase)

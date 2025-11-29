@@ -8,13 +8,35 @@ using System.Xml.Serialization;
 
 namespace IT_Step_II_Project.Models
 {
+    /// <summary>
+    /// User class
+    /// </summary>
     public class User
     {
+        /// <summary>
+        /// User class username
+        /// </summary>
         public string username { get; set; }
+        /// <summary>
+        /// User class password
+        /// </summary>
         public string password { get; set; }
+        /// <summary>
+        /// Gets or sets the confirmation password.
+        /// </summary>
         public string passwordConfirm { get; set; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="User"/> class.
+        /// </summary>
+        /// კონსტრუქტორი რომელიც ქმნის ობიექტს
         public User() { }
+        /// <summary>
+        /// User class
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="passwordConfirm"></param>
         public User(
             string username,
             string password,

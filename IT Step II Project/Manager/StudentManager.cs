@@ -7,11 +7,17 @@ using IT_Step_II_Project.Models;
 
 namespace IT_Step_II_Project.Manager
 {
+    /// <summary>
+    /// Student Manager Class
+    /// </summary>
     internal class StudentManager : Icrud
     {
         private List<Student> _students;
         private readonly string _filePath;
 
+        /// <summary>
+        /// loads student's data
+        /// </summary>
         public StudentManager()
         {
             string projectRoot = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
@@ -27,6 +33,9 @@ namespace IT_Step_II_Project.Manager
             LoadStudentData();
         }
 
+        /// <summary>
+        /// Loads Student's data
+        /// </summary>
         private void LoadStudentData()
         {
             if (File.Exists(_filePath))
@@ -40,6 +49,9 @@ namespace IT_Step_II_Project.Manager
             }
         }
 
+        /// <summary>
+        /// Saving user's data
+        /// </summary>
         private void SaveStudentData()
         {
             var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
@@ -47,6 +59,9 @@ namespace IT_Step_II_Project.Manager
             File.WriteAllText(_filePath, jsonString);
         }
 
+        /// <summary>
+        /// Adding student in JSON file
+        /// </summary>
         public void AddStudent()
         {
             try
@@ -99,6 +114,9 @@ namespace IT_Step_II_Project.Manager
             }
         }
 
+        /// <summary>
+        /// showing all students
+        /// </summary>
         public void ShowAll()
         {
             if (_students.Count == 0)
@@ -119,6 +137,9 @@ namespace IT_Step_II_Project.Manager
             Console.WriteLine($"\nTotal Students: {_students.Count}");
         }
 
+        /// <summary>
+        /// finding student with roll number
+        /// </summary>
         public void FindStudent()
         {
             try
@@ -150,6 +171,9 @@ namespace IT_Step_II_Project.Manager
             }
         }
 
+        /// <summary>
+        /// changing studen't grade by a roll number
+        /// </summary>
         public void ChangeGrade()
         {
             try
@@ -195,7 +219,10 @@ namespace IT_Step_II_Project.Manager
                 Console.WriteLine($"Unexpected error: {ex.Message}");
             }
         }
-
+        
+        /// <summary>
+        /// deleting student from JSON file using a roll number
+        /// </summary>
         public void DeleteStudent()
         {
             try
