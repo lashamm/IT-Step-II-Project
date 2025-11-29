@@ -69,21 +69,41 @@ namespace IT_Step_II_Project.Manager
 
         private void PasswordValidation(string password)
         {
-            if (password.Length < 8)
+            while (true)
             {
-                throw new ArgumentException("Password must be at least 8 characters long.");
-            }
-            if (!password.Any(char.IsUpper))
-            {
-                throw new ArgumentException("Password must contain at least one uppercase letter.");
-            }
-            if (!password.Any(char.IsLower))
-            {
-                throw new ArgumentException("Password must contain at least one lowercase letter.");
-            }
-            if (!password.Any(char.IsDigit))
-            {
-                throw new ArgumentException("Password must contain at least one digit.");
+                if (password.Length < 8)
+                {
+                    Console.WriteLine("Length of your passwor must be more than 8");
+                    continue;
+                }
+                if (!password.Any(char.IsUpper))
+                {
+                    Console.WriteLine("Password must contain at least 1 uppercase character or 1 lowercase character");
+                    continue;
+                }
+                if (!password.Any(char.IsLower))
+                {
+                    Console.WriteLine("Password must contain at least 1 uppercase character or 1 lowercase character");
+                    continue;
+                }
+                if (!password.Any(char.IsDigit))
+                {
+                    Console.WriteLine("Password must contain at least 1 number");
+                    continue;
+                }
+                if (password.Any(char.IsWhiteSpace))
+                {
+                    Console.WriteLine("Password must not contain spaces");
+                    continue;
+                }
+                if (password.Length >= 8 &&
+                    password.Any(char.IsUpper) &&
+                    password.Any(char.IsLower) &&
+                    password.Any(char.IsDigit) &&
+                    !password.Any(char.IsWhiteSpace))
+                {
+                    break;
+                }
             }
         }
 
@@ -91,7 +111,7 @@ namespace IT_Step_II_Project.Manager
         {
             if (password != passwordConfirm)
             {
-                throw new ArgumentException("Passwords do not match.");
+                Console.WriteLine("Passwords don't match");
             }
         }
 

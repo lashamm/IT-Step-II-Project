@@ -177,7 +177,6 @@ namespace IT_Step_II_Project.Manager
                     student.Grade = newGrade;
                     Console.WriteLine("Grade updated successfully!");
 
-                    // Save to JSON file
                     var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
                     var jsonString = JsonSerializer.Serialize(_students, jsonOptions);
                     File.WriteAllText(_filePath, jsonString);
@@ -221,7 +220,6 @@ namespace IT_Step_II_Project.Manager
                         _students.Remove(student);
                         Console.WriteLine("Student deleted successfully!");
 
-                        // Save to JSON file
                         var jsonOptions = new JsonSerializerOptions { WriteIndented = true };
                         var jsonString = JsonSerializer.Serialize(_students, jsonOptions);
                         File.WriteAllText(_filePath, jsonString);

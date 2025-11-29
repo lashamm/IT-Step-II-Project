@@ -3,43 +3,59 @@ using IT_Step_II_Project.Manager;
 using System.Text.Json;
 
 
-Console.WriteLine("Welocome, press 'L' to log-in or press 'R' to Register");
-var optionLogOrReg = char.ToUpper(Console.ReadKey().KeyChar);
+Console.WriteLine("Welcome, press 'L' to log-in or press 'R' to Register");
 
-while (true)
+bool isAuthenticated = false; 
+
+while (!isAuthenticated) 
 {
-    optionLogOrReg = char.ToUpper(Console.ReadKey().KeyChar);
+    var optionLogOrReg = char.ToUpper(Console.ReadKey().KeyChar);
     Console.Clear();
-
+    
     if (optionLogOrReg == 'L')
     {
-        Console.WriteLine("Please enter your username");
-        string username = Console.ReadLine() ?? string.Empty;
-        Console.WriteLine("Please enter your password");
-        string password = Console.ReadLine() ?? string.Empty;
-        UserManager userManager = new UserManager();
-        bool loginSuccess = userManager.UserLogin(username, password);
-        while (loginSuccess)
-        if (!loginSuccess)
+        bool loginSuccess = false;
+        while (!loginSuccess)
         {
-            Console.WriteLine("Login failed.");
+            Console.WriteLine("Please enter your username");
+            string username = Console.ReadLine() ?? string.Empty;
+            Console.WriteLine("Please enter your password");
+            string password = Console.ReadLine() ?? string.Empty;
+            
+            UserManager userManager = new UserManager();
+            loginSuccess = userManager.UserLogin(username, password);
+            
+            if (!loginSuccess)
+            {
+                Console.WriteLine("Would you like to try again? (Y/N)");
+                string retry = Console.ReadLine() ?? string.Empty;
+                if (retry.ToUpper() != "Y")
+                {
+                    break;
+                }
+            }
         }
-        Console.Clear();
-        break;
+        
+        if(loginSuccess)
+        {
+            Console.WriteLine("You are logged in");
+            Console.Clear();
+            isAuthenticated = true; 
+        }
     }
     else if (optionLogOrReg == 'R')
     {
         UserManager userManager = new UserManager();
         userManager.UserCreate();
         Console.Clear();
-        break;
+        isAuthenticated = true;
     }
     else
     {
         Console.WriteLine("Invalid option. Please press 'L' to log-in or 'R' to Register");
-        // Loop continues, prompting again
     }
 }
+
 
 StudentManager studentManager = new StudentManager();
 
