@@ -31,7 +31,13 @@ while (!isAuthenticated)
                 string retry = Console.ReadLine() ?? string.Empty;
                 if (retry.ToUpper() != "Y")
                 {
-                    break;
+                    Console.Clear();
+                    Console.WriteLine("goodbye");
+                    return;
+                }
+                else
+                {
+                    Console.Clear();
                 }
             }
         }

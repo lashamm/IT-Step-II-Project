@@ -89,32 +89,30 @@ namespace IT_Step_II_Project.Manager
         {
             while (true)
             {
+                Console.Write("Enter your password: ");
+                password = Console.ReadLine();
+
                 if (password.Length < 8)
                 {
                     Console.WriteLine("Length of your passwor must be more than 8");
-                    continue;
                 }
-                if (!password.Any(char.IsUpper))
+                else if (!password.Any(char.IsUpper))
                 {
                     Console.WriteLine("Password must contain at least 1 uppercase character or 1 lowercase character");
-                    continue;
                 }
-                if (!password.Any(char.IsLower))
+                else if(!password.Any(char.IsLower))
                 {
                     Console.WriteLine("Password must contain at least 1 uppercase character or 1 lowercase character");
-                    continue;
                 }
-                if (!password.Any(char.IsDigit))
+                else if (!password.Any(char.IsDigit))
                 {
                     Console.WriteLine("Password must contain at least 1 number");
-                    continue;
                 }
-                if (password.Any(char.IsWhiteSpace))
+                else if(password.Any(char.IsWhiteSpace))
                 {
                     Console.WriteLine("Password must not contain spaces");
-                    continue;
                 }
-                if (password.Length >= 8 &&
+                else if(password.Length >= 8 &&
                     password.Any(char.IsUpper) &&
                     password.Any(char.IsLower) &&
                     password.Any(char.IsDigit) &&
@@ -124,7 +122,6 @@ namespace IT_Step_II_Project.Manager
                 }
             }
         }
-
         /// <summary>
         /// Confirming password
         /// </summary>
@@ -135,6 +132,7 @@ namespace IT_Step_II_Project.Manager
             if (password != passwordConfirm)
             {
                 Console.WriteLine("Passwords don't match");
+                return;
             }
         }
 
