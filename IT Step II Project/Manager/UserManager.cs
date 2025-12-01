@@ -17,7 +17,7 @@ namespace IT_Step_II_Project.Manager
         private readonly string _filePath;
 
         /// <summary>
-        /// loads student data
+        /// Method that loads student data
         /// </summary>
         public UserManager()
         {
@@ -35,7 +35,7 @@ namespace IT_Step_II_Project.Manager
             LoadUserData();
         }
         /// <summary>
-        /// Username validation
+        /// Method username validation
         /// </summary>
         /// <param name="username"></param>
         /// <returns></returns>
@@ -45,7 +45,7 @@ namespace IT_Step_II_Project.Manager
         }
 
         /// <summary>
-        /// User create
+        /// Method user create
         /// </summary>
         public void UserCreate()
         {
@@ -82,7 +82,7 @@ namespace IT_Step_II_Project.Manager
         }
 
         /// <summary>
-        /// Password validation
+        /// Method password validation
         /// </summary>
         /// <param name="password"></param>
         private void PasswordValidation(string password)
@@ -123,7 +123,7 @@ namespace IT_Step_II_Project.Manager
             }
         }
         /// <summary>
-        /// Confirming password
+        /// Method confirming password
         /// </summary>
         /// <param name="password"></param>
         /// <param name="passwordConfirm"></param>
@@ -137,7 +137,7 @@ namespace IT_Step_II_Project.Manager
         }
 
         /// <summary>
-        /// Saving User's data
+        /// Method saving User's data
         /// </summary>
         private void SaveUserData()
         {
@@ -151,7 +151,7 @@ namespace IT_Step_II_Project.Manager
         }
 
         /// <summary>
-        /// loading User's data
+        /// Method loading User's data
         /// </summary>
         private void LoadUserData()
         {
@@ -165,7 +165,7 @@ namespace IT_Step_II_Project.Manager
             }
         }
         /// <summary>
-        /// Get's all users
+        /// Method that get's all users
         /// </summary>
         /// <returns></returns>
         public List<User> GetAllUsers()
@@ -174,7 +174,7 @@ namespace IT_Step_II_Project.Manager
         }
 
         /// <summary>
-        /// User login validation
+        /// Method user login validation
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>

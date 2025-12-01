@@ -13,26 +13,28 @@ namespace IT_Step_II_Project.Models
     /// </summary>
     public class User
     {
-        /// <summary>
-        /// User class username
-        /// </summary>
+
+        //////  ინკაფსულაცია
         public string username { get; set; }
         /// <summary>
-        /// User class password
+        /// User class property password
         /// </summary>
         public string password { get; set; }
         /// <summary>
-        /// Gets or sets the confirmation password.
+        /// Property that gets or sets the confirmation password.
         /// </summary>
         public string passwordConfirm { get; set; }
+        //////
 
+
+        //// პოლიმორფიზმი
         /// <summary>
-        /// Initializes a new instance of the <see cref="User"/> class.
+        /// კონსტრუქტორი User class-ისთვის
         /// </summary>
         /// კონსტრუქტორი რომელიც ქმნის ობიექტს
         public User() { }
         /// <summary>
-        /// User class
+        /// User class კონსტრუქტორი
         /// </summary>
         /// <param name="username"></param>
         /// <param name="password"></param>
@@ -46,10 +48,7 @@ namespace IT_Step_II_Project.Models
             this.password = password;
             this.passwordConfirm = passwordConfirm;
          }
+        ////
 
-        public override string ToString()
-        {
-            return $"Username: {username}, Password: {password}";
-        }
     }
 }

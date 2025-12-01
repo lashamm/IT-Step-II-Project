@@ -7,12 +7,15 @@ namespace IT_Step_II_Project.Models
     /// </summary>
     internal class Student
     {
+        /// <summary>
+        /// ველები Student class-ისთვის
+        /// </summary>
         private string _name;
         private int _rollNumber;
         private char _grade;
 
         /// <summary>
-        /// Student's name
+        /// Student's name property
         /// </summary>
         public string Name
         {
@@ -28,7 +31,7 @@ namespace IT_Step_II_Project.Models
         }
 
         /// <summary>
-        /// Student's rollnumber
+        /// Student's rollnumber property
         /// </summary>
         public int RollNumber
         {
@@ -45,7 +48,7 @@ namespace IT_Step_II_Project.Models
         }
 
         /// <summary>
-        /// Student's grader
+        /// Student's grader property
         /// </summary>
         public char Grade
         {
@@ -60,13 +63,18 @@ namespace IT_Step_II_Project.Models
                 _grade = upperValue;
             }
         }
-
+        
         /// <summary>
-        /// Initializes a new instance of the <see cref="Student"/> class.
+        /// უპარამეტრო კონსტრუქტორი
         /// </summary>
-        /// კონსტრუქტორი რომელიც ქმნის ობიექტს
         public Student() { }
 
+        /// <summary>
+        /// პარამეტრიანი კონსტრუქტორი
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="rollNumber"></param>
+        /// <param name="grade"></param>
         public Student(string name, int rollNumber, char grade)
         {
             Name = name;
@@ -74,9 +82,5 @@ namespace IT_Step_II_Project.Models
             Grade = grade;
         }
 
-        public override string ToString()
-        {
-            return $"Name: {Name}, Roll Number: {RollNumber}, Grade: {Grade}";
-        }
     }
 }
