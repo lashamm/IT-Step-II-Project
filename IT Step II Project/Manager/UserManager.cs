@@ -17,7 +17,7 @@ namespace IT_Step_II_Project.Manager
         private readonly string _filePath;
 
         /// <summary>
-        /// Method that loads student data
+        /// Method/constructor that loads student data
         /// </summary>
         public UserManager()
         {

@@ -3,5 +3,10 @@
     "username": "Lasha",
     "password": "Lasha1234",
     "passwordConfirm": "Lasha1234"
+  },
+  {
+    "username": "Giorgi",
+    "password": "Giorgi1234",
+    "passwordConfirm": "Giorgi1234"
   }
 ]

@@ -1,2 +1,12 @@
 [
+  {
+    "Name": "Lasha",
+    "RollNumber": 1,
+    "Grade": "A"
+  },
+  {
+    "Name": "Giorgi",
+    "RollNumber": 2,
+    "Grade": "A"
+  }
 ]

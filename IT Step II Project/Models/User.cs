@@ -27,7 +27,7 @@ namespace IT_Step_II_Project.Models
         //////
 
 
-        //// პოლიმორფიზმი overloading
+        //// overloading
         /// <summary>
         /// კონსტრუქტორი User class-ისთვის
         /// </summary>
